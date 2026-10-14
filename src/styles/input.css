@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@source "../../views";
+
+/*
+ * Tokens medidos sobre Caso2.jpg (muestreo de píxeles, ver docs/ux/anexos).
+ * Unidad de diseño: 1 px del mockup (768 px de ancho) = 1/16 rem.
+ * En escritorio (>= 1280 px) el rem escala con el viewport, así la página
+ * conserva exactamente las proporciones del mockup a cualquier ancho.
+ */
+@theme {
+  --font-sans: "Signika", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Baloo 2", "Signika", ui-sans-serif, sans-serif;
+  --font-script: "Dancing Script", cursive;
+
+  --color-cream: #f7e6cc;
+  --color-blush: #fdefec;
+  --color-blush-line: #f3d9d4;
+  --color-paper: #fdfaf5;
+  --color-rose-50: #fceeeb;
+  --color-rose-100: #fbe1df;
+  --color-brand: #a12928;
+  --color-brand-700: #8a2120;
+  --color-brand-800: #74201f;
+  --color-ink: #6b4744;
+  --color-ink-soft: #6c6561;
+  --color-hero-pink: #eb7c85;
+  --color-hero-red: #9e2626;
+  --color-gold: #e2ab35;
+  --color-field: #e6c9c6;
+
+  --shadow-tile: 0 0.25rem 0.875rem rgb(161 41 40 / 0.08);
+  --shadow-photo: 0 0.375rem 1rem rgb(70 20 20 / 0.28);
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
+  @media (min-width: 80rem) {
+    html {
+      font-size: min(calc(100vw / 48), 33.333px);
+    }
+  }
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .hero-bg {
+    background: linear-gradient(62deg, #eb7c85 0%, #c95d65 38%, #ab3337 72%, #9e2626 100%);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
